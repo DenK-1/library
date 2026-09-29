@@ -1,0 +1,17 @@
+body {
+    background-color: rgb(182, 200, 216);
+}
+
+.library {
+    border: 1px solid black;
+    width: 50%;
+    margin: auto;
+}
+
+.library p {
+    text-align: center;
+}
+
+#addBook {
+    margin: 10px;
+}

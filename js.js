@@ -1,8 +1,8 @@
 "use strict"
 let buttonShowdialog = document.querySelector("#addBook")
-let dialog = document.querySelector("#addBook + dialog")
+let dialog = document.querySelector("#dialog")
 buttonShowdialog.addEventListener("click", function () {
-    dialog.show()
+    dialog.showModal()
 })
 
 let buttonCloseDialog = document.querySelector("#diagClose")
@@ -10,7 +10,7 @@ buttonCloseDialog.addEventListener("click", function () {
     let inputs = dialog.querySelectorAll("input")
     let inputsValue = []
     for (let i of inputs) {
-        inputsValue.push(i.value)
+        i.type == "checkbox" ? inputsValue.push(i.checked) : inputsValue.push(i.value)
     }
     console.log(`inputsValue ${inputsValue}`)
     addBookToLibrary(...inputsValue)
@@ -21,14 +21,16 @@ buttonCloseDialog.addEventListener("click", function () {
 const myLibrary = [];
 
 class Book {
-    constructor(name, author) {
+    constructor(name, author, pages, read) {
         this.name = name
         this.author = author
+        this.pages = pages
+        this.read = read
     }
 }
 
-function addBookToLibrary(n, a) {
-    let obj = new Book(n, a)
+function addBookToLibrary(n, a, p, r) {
+    let obj = new Book(n, a, p, r)
     obj.id = crypto.randomUUID()
     myLibrary.push(obj)
 }
