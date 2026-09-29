@@ -10,20 +10,17 @@
 <body>
     <div class="library">
         <p>What books have you read? Fill out the form</p>
-        <button id="addBook">Add Books</button>
+        <button id="addBookButton">Add Books</button>
         <button id="showBooks">Show all books</button>
-        <dialog id="dialog">
-            <form method="dialog">
-                <p>Please add the book</p>
-                <label>Name<input type="text"></label>
-                <label>Author<input type="text"></label>
-                <label>Number of pages<input type="text"></label>
-                <label>Read<input type="checkbox"></label>
-                <button id="diagClose">Add book</button>
-
-            </form>
-        </dialog>
     </div>
+    <form id="addBookForm">
+        <p>Please add the book</p>
+        <label>Name <input type="text"></label>
+        <label>Author <input type="text"></label>
+        <label>Number of pages <input type="text"></label>
+        <label>Read <input type="checkbox"></label>
+        <button id="addBook">Add book</button>
+    </form>
     <script src="js.js"></script>
 </body>
 

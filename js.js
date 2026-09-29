@@ -1,21 +1,20 @@
 "use strict"
-let buttonShowdialog = document.querySelector("#addBook")
-let dialog = document.querySelector("#dialog")
+let buttonShowdialog = document.querySelector("#addBookButton")
+let addBookBut = document.querySelector("#addBookForm")
 buttonShowdialog.addEventListener("click", function () {
-    dialog.showModal()
+    addBookBut.style.display = "flex"
 })
 
-let buttonCloseDialog = document.querySelector("#diagClose")
-buttonCloseDialog.addEventListener("click", function () {
-    let inputs = dialog.querySelectorAll("input")
+let buttonAddBook = document.querySelector("#addBook")
+buttonAddBook.addEventListener("click", function (e) {
+    let inputs = addBookBut.querySelectorAll("input")
     let inputsValue = []
     for (let i of inputs) {
         i.type == "checkbox" ? inputsValue.push(i.checked) : inputsValue.push(i.value)
     }
     console.log(`inputsValue ${inputsValue}`)
     addBookToLibrary(...inputsValue)
-    console.log(`myLibrary ${JSON.stringify(myLibrary)}`)
-    dialog.close()
+    e.preventDefault()
 })
 
 const myLibrary = [];
