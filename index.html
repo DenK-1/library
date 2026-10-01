@@ -15,11 +15,12 @@
     </div>
     <form id="addBookForm">
         <p>Please add the book</p>
-        <label>Name <input type="text"></label>
-        <label>Author <input type="text"></label>
-        <label>Number of pages <input type="text"></label>
+        <label>Name <input required type="text"></label>
+        <label>Author <input required type="text"></label>
+        <label>Number of pages <input required type="text"></label>
         <label>Read <input type="checkbox"></label>
-        <button id="addBook">Add book</button>
+        <button id="addBook" type="submit">Add book</button>
+        <button id="closeBook">X</button>
     </form>
     <script src="js.js"></script>
 </body>

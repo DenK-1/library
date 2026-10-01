@@ -1,20 +1,38 @@
 "use strict"
 let buttonShowdialog = document.querySelector("#addBookButton")
 let addBookBut = document.querySelector("#addBookForm")
+let inputs = addBookBut.querySelectorAll("input")
+let clearInputs = function () {
+    for (let i of inputs) {
+        i.type == "checkbox" ? i.checked = false : i.value = ""
+    }
+}
 buttonShowdialog.addEventListener("click", function () {
     addBookBut.style.display = "flex"
 })
 
-let buttonAddBook = document.querySelector("#addBook")
-buttonAddBook.addEventListener("click", function (e) {
-    let inputs = addBookBut.querySelectorAll("input")
+addBookBut.addEventListener("submit", function (e) {
     let inputsValue = []
     for (let i of inputs) {
         i.type == "checkbox" ? inputsValue.push(i.checked) : inputsValue.push(i.value)
     }
     console.log(`inputsValue ${inputsValue}`)
     addBookToLibrary(...inputsValue)
+    clearInputs()
     e.preventDefault()
+})
+
+
+let closeBookButt = document.querySelector("#closeBook")
+closeBookButt.addEventListener("click", function (e) {
+    addBookBut.style.display = "none"
+    clearInputs()
+    e.preventDefault()
+})
+
+let allBooks = document.querySelector("#showBooks")
+allBooks.addEventListener("click", function (e) {
+
 })
 
 const myLibrary = [];
@@ -33,6 +51,8 @@ function addBookToLibrary(n, a, p, r) {
     obj.id = crypto.randomUUID()
     myLibrary.push(obj)
 }
+
+
 function showBooks() {
 
 }

@@ -25,11 +25,14 @@ body {
     z-index: 999;
     left: 40%;
     top: 20%;
-    display: none;
+    /* display: none; */
+    display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
-#formClose {
-    align-self: flex-start;
+#closeBook {
+    position: absolute;
+    right: 0px;
+    top: 0px;
 }
