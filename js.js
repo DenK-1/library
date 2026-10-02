@@ -1,17 +1,17 @@
 "use strict"
-let buttonShowdialog = document.querySelector("#addBookButton")
-let addBookBut = document.querySelector("#addBookForm")
-let inputs = addBookBut.querySelectorAll("input")
-let clearInputs = function () {
+const addBookBtn = document.querySelector("#add-book-button")
+const addFormBtn = document.querySelector("#add-book-form")
+const inputs = addFormBtn.querySelectorAll("input")
+const clearInputs = function () {
     for (let i of inputs) {
         i.type == "checkbox" ? i.checked = false : i.value = ""
     }
 }
-buttonShowdialog.addEventListener("click", function () {
-    addBookBut.style.display = "flex"
+addBookBtn.addEventListener("click", function () {
+    addFormBtn.style.display = "flex"
 })
 
-addBookBut.addEventListener("submit", function (e) {
+addFormBtn.addEventListener("submit", function (e) {
     let inputsValue = []
     for (let i of inputs) {
         i.type == "checkbox" ? inputsValue.push(i.checked) : inputsValue.push(i.value)
@@ -23,16 +23,16 @@ addBookBut.addEventListener("submit", function (e) {
 })
 
 
-let closeBookButt = document.querySelector("#closeBook")
-closeBookButt.addEventListener("click", function (e) {
-    addBookBut.style.display = "none"
+const closeBookBtn = document.querySelector("#close-book")
+closeBookBtn.addEventListener("click", function (e) {
+    addFormBtn.style.display = "none"
     clearInputs()
     e.preventDefault()
 })
 
-let allBooks = document.querySelector("#showBooks")
-allBooks.addEventListener("click", function (e) {
-
+const showBooksBtn = document.querySelector("#show-books")
+showBooksBtn.addEventListener("click", function (e) {
+    showBooks()
 })
 
 const myLibrary = [];
@@ -51,8 +51,33 @@ function addBookToLibrary(n, a, p, r) {
     obj.id = crypto.randomUUID()
     myLibrary.push(obj)
 }
-
-
+/* 
+создаем эллемент div
+записываем в него другие div
+записываем чекбокс с отметкой чтения
+записываем кнопку с удалением
+*/
+const allbooksEl = document.querySelector("#all-books")
 function showBooks() {
+    if (myLibrary.length == 0) return
+    const allbooks = allbooksEl.querySelectorAll(".book")
+    for (let div of allbooks) div.remove()
+
+    for (let obj of myLibrary) {
+        let div = document.createElement("div")
+        div.classList.add("book")
+        div.setAttribute("data-UUID", obj.id)
+        div.insertAdjacentHTML("afterbegin",
+            `<div>Name:${obj.name}</div>
+             <div>Author:${obj.author}</div>
+             <div>Pages:${obj.pages}</div>
+             <button id="delete-book">Delete</button>
+            `)
+        allbooksEl.append(div)
+    }
+
 
 }
+addBookToLibrary("chapaev i pustota", "Victor Pelevi", 123, true)
+addBookToLibrary("chapaev i pustota", "Victor Pelevi", 123, true)
+showBooks() 
