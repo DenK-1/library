@@ -16,9 +16,9 @@ addFormBtn.addEventListener("submit", function (e) {
     for (let i of inputs) {
         i.type == "checkbox" ? inputsValue.push(i.checked) : inputsValue.push(i.value)
     }
-    console.log(`inputsValue ${inputsValue}`)
     addBookToLibrary(...inputsValue)
     clearInputs()
+    showBooks()
     e.preventDefault()
 })
 
@@ -34,6 +34,8 @@ const showBooksBtn = document.querySelector("#show-books")
 showBooksBtn.addEventListener("click", function (e) {
     showBooks()
 })
+
+
 
 const myLibrary = [];
 
@@ -51,13 +53,21 @@ function addBookToLibrary(n, a, p, r) {
     obj.id = crypto.randomUUID()
     myLibrary.push(obj)
 }
-/* 
-создаем эллемент div
-записываем в него другие div
-записываем чекбокс с отметкой чтения
-записываем кнопку с удалением
-*/
+
 const allbooksEl = document.querySelector("#all-books")
+allbooksEl.addEventListener("click", function (event) {
+    let button = event.target.closest(".deleteBook")
+    if (!button) return
+    let el = event.target.closest(".book")
+    let id = el.dataset.uuid
+    for (let i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i].id == id) {
+            myLibrary.splice(i--, 1)
+        }
+    }
+    showBooks()
+})
+
 function showBooks() {
     if (myLibrary.length == 0) return
     const allbooks = allbooksEl.querySelectorAll(".book")
@@ -66,18 +76,18 @@ function showBooks() {
     for (let obj of myLibrary) {
         let div = document.createElement("div")
         div.classList.add("book")
-        div.setAttribute("data-UUID", obj.id)
+        div.setAttribute("data-uuid", obj.id)
         div.insertAdjacentHTML("afterbegin",
             `<div>Name:${obj.name}</div>
              <div>Author:${obj.author}</div>
              <div>Pages:${obj.pages}</div>
-             <button id="delete-book">Delete</button>
+             <div>Read:${obj.read}</div>
+             <button class="deleteBook">Delete</button>
             `)
         allbooksEl.append(div)
     }
-
-
 }
-addBookToLibrary("chapaev i pustota", "Victor Pelevi", 123, true)
-addBookToLibrary("chapaev i pustota", "Victor Pelevi", 123, true)
+
+addBookToLibrary("chapaev i pustota", "Victor Pelevin", 123, true)
+addBookToLibrary("chapaev i pustota", "Victor Pelevin", 123, true)
 showBooks() 
