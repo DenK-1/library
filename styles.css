@@ -50,7 +50,7 @@ body {
 
 #all-books {
     margin: 10px;
-    width: 35%;
+    width: 25%;
     height: auto;
     display: flex;
     flex-direction: column;
