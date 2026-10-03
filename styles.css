@@ -4,13 +4,24 @@ body {
 
 .library {
     border: 1px solid black;
-    width: 50%;
+    border-radius: 20px;
+    background-color: rgb(168, 174, 175);
+    width: 30%;
     margin: auto;
     padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+.library button {
+    width: 100px;
+}
+
 
 .library p {
     text-align: center;
+    font-weight: bold;
 }
 
 #add-book {
@@ -19,8 +30,8 @@ body {
 
 #add-book-form {
     width: 200px;
-    border: 1px solid black;
-    padding: 5px;
+
+    padding: 50px;
     position: absolute;
     z-index: 999;
     left: 40%;
@@ -29,19 +40,22 @@ body {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    background-image: url(svitok.png);
+    background-size: 120% 110%;
+    background-position: -30px center;
 }
 
 #close-book {
     position: absolute;
-    right: 0px;
-    top: 0px;
+    right: 20px;
+    top: -20px;
 }
 
 #all-books {
     margin: 10px;
-    width: 350px;
+    width: 35%;
     height: auto;
-    border: 2px solid black;
+
     display: flex;
     flex-direction: column;
 }
@@ -49,11 +63,34 @@ body {
 .titleBooks {
     justify-content: center;
     font-weight: bold;
-    align-self: center;
 }
 
 .book {
     border: 1px solid black;
     margin: 5px;
     padding: 5px;
+    border-radius: 5px;
+    background-color: rgb(153, 176, 197);
+}
+
+.titlebook {
+    font-weight: bold;
+}
+
+.shelf {
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    background-image: url(books.png);
+    background-size: 100% 130%;
+}
+
+form p,
+form label {
+    font-weight: bold;
+}
+
+form p {
+    text-align: center;
+    text-decoration: underline
 }
