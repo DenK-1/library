@@ -29,11 +29,6 @@ closeBookBtn.addEventListener("click", function (e) {
     e.preventDefault()
 })
 
-/* const showBooksBtn = document.querySelector("#show-books")
-showBooksBtn.addEventListener("click", function (e) {
-    showBooks()
-}) */
-
 const myLibrary = [];
 
 class Book {
@@ -98,7 +93,3 @@ function showBooks() {
         allbooksEl.append(div)
     }
 }
-
-/* addBookToLibrary("chapaev i pustota", "Victor Pelevin", 123, true)
-addBookToLibrary("chapaev i pustota", "Victor Pelevin", 123, true)
-showBooks()  */
